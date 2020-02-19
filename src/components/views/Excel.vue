@@ -1,35 +1,88 @@
 <template>
   <div>
     <div id="app" ref="spreadsheet"></div>
-    <div><input type="button" value="Add new row" @click="() => spreadsheet.insertRow()" /></div>
+      <div><input type="button" value="Tambah Data Mahasiswa" @click="() => spreadsheet.insertRow()" /></div>
+      <div><input type="button" value="Hapus Data Mahasiswa" @click="() => spreadsheet.deleteRow()" /></div>
   </div>
 </template>
 
 <script>
+/* eslint-disable */ 
 import jexcel from 'jexcel'
 import 'jexcel/dist/jexcel.css'
-var data = [
-  ['Jazz', 'Honda', '2019-02-12', '', true, '$ 2.000,00', '#777700'],
-  ['Civic', 'Honda', '2018-07-11', '', true, '$ 4.000,01', '#007777']
-]
-var options = {
-  data: data,
-  allowToolbar: true,
-  columns: [
-    { type: 'text', title: 'Car', width: '120px' },
-    { type: 'dropdown', title: 'Make', width: '250px', source: [ 'Alfa Romeo', 'Audi', 'Bmw' ] },
-    { type: 'calendar', title: 'Available', width: '250px' },
-    { type: 'image', title: 'Photo', width: '120px' },
-    { type: 'checkbox', title: 'Stock', width: '80px' },
-    { type: 'numeric', title: 'Price', width: '100px', mask: '$ #.##,00', decimal: ',' },
-    { type: 'color', width: '100px', render: 'square' }
-  ]
-}
+import axios from 'axios'
+
 export default {
-  name: 'App',
-  mounted: function () {
-    let spreadsheet = jexcel(this.$el, options)
+  data(){
+    return{
+      biodata: [],
+      form: {
+        id: '',
+        nrp: '',
+        nama: '',
+        angkatan: '',
+        tgllahir: '',
+        foto: '',
+        aktif: ''
+      }
+    }
+  },
+  mounted() {
+    let spreadsheet = jexcel(this.$el, this.jexcelOptions)
     Object.assign(this, { spreadsheet })
+  },
+  methods: {
+    newRow(){
+      axios.post('http://localhost:3000/biodata/', this.form).then(res => {
+      console.log(res.data)
+      })
+    },
+    updateRow(instance, cell, columns, row, value){
+      axios.get('http://localhost:3000/biodata/').then(res => {
+        var index = Object.values(res.data[row])
+        index[columns] = value
+        console.log(index)
+        axios.put('http://localhost:3000/biodata/' + index[0], {
+          id: index[0],
+          nrp: index[1],
+          nama: index[2],
+          angkatan: index[3],
+          tgllahir: index[4],
+          foto: index[5],
+          aktif: index[6]
+        }).then(res => {
+          console.log(res.data)
+        })
+      })
+    },
+    deleteRow(instance, row){
+      axios.get('http://localhost:3000/biodata/').then(res => {
+        var index = Object.values(res.data[row])
+        console.log(row)
+        axios.delete('http://localhost:3000/biodata/' + index[0])
+      })
+    }
+  },
+  computed: {
+    jexcelOptions(){
+      return {
+        data: this.biodata,
+        allowToolbar: True,
+        url: 'http://localhost:3000/biodata/',
+        oninsertrow: this.newRow,
+        onchange: this.updateRow,
+        ondeleterow: this.deleteRow,
+        columns: [
+          {title: 'id', width: '20px', type: 'hidden'},
+          {title: 'NRP', width: '120px', type: 'text'},
+          {title: 'Nama', width: '180px', type: 'text'},
+          {title: 'Angkatan', width: '120px', type: 'numeric'},
+          {title: 'Tanggal Lahir', width: '120px', type: 'calender', options: {format: 'DD/MM/YYY'}},
+          {title: 'Photo', width: '180px', type: 'image'},
+          {title: 'Aktif', width: '120px', type: 'checkbox'}
+        ]
+      }
+    }
   }
 }
 </script>

@@ -11,6 +11,7 @@ import AccessView from './components/views/Access.vue'
 import ServerView from './components/views/Server.vue'
 import ReposView from './components/views/Repos.vue'
 import ExcelView from './components/views/Excel.vue'
+import JexcelView from './components/views/Jexcel.vue'
 
 // Routes
 const routes = [
@@ -62,7 +63,12 @@ const routes = [
         path: 'excel',
         component: ExcelView,
         name: 'Excel',
-        meta: {description: 'contoh'}
+        meta: {description: 'Jexcel Axios'}
+      }, {
+        path: 'jexcel',
+        component: JexcelView,
+        name: 'Jexcel',
+        meta: {description: 'Jexcel'}
       }
     ]
   }, {
