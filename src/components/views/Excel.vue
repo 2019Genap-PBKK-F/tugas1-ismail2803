@@ -28,20 +28,20 @@ export default {
     }
   },
   mounted() {
-    let spreadsheet = jexcel(this.$el, this.jexcelOptions)
+    let spreadsheet = jexcel(this.$el, this.Options)
     Object.assign(this, { spreadsheet })
   },
   methods: {
-    newRow(){
+    tambahData(){
       axios.post('http://localhost:3000/biodata/', this.form).then(res => {
-      console.log(res.data)
+        console.log("Data baru", res.data)
       })
     },
-    updateRow(instance, cell, columns, row, value){
+    updateData(instance, cell, columns, row, value){
       axios.get('http://localhost:3000/biodata/').then(res => {
         var index = Object.values(res.data[row])
         index[columns] = value
-        console.log(index)
+        // console.log(index)
         axios.put('http://localhost:3000/biodata/' + index[0], {
           id: index[0],
           nrp: index[1],
@@ -51,27 +51,27 @@ export default {
           foto: index[5],
           aktif: index[6]
         }).then(res => {
-          console.log(res.data)
+          console.log("Update Data", res.data)
         })
       })
     },
-    deleteRow(instance, row){
+    hapusData(instance, row){
       axios.get('http://localhost:3000/biodata/').then(res => {
         var index = Object.values(res.data[row])
-        console.log(row)
         axios.delete('http://localhost:3000/biodata/' + index[0])
+        console.log("Hapus Data", index)
       })
     }
   },
   computed: {
-    jexcelOptions(){
+    Options(){
       return {
         data: this.biodata,
-        allowToolbar: True,
+        allowToolbar: true,
         url: 'http://localhost:3000/biodata/',
-        oninsertrow: this.newRow,
-        onchange: this.updateRow,
-        ondeleterow: this.deleteRow,
+        oninsertrow: this.tambahData,
+        onchange: this.updateData,
+        ondeleterow: this.hapusData,
         columns: [
           {title: 'id', width: '20px', type: 'hidden'},
           {title: 'NRP', width: '120px', type: 'text'},
