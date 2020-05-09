@@ -10,8 +10,19 @@ import SettingView from './components/views/Setting.vue'
 import AccessView from './components/views/Access.vue'
 import ServerView from './components/views/Server.vue'
 import ReposView from './components/views/Repos.vue'
-import ExcelView from './components/views/Excel.vue'
-import JexcelView from './components/views/Jexcel.vue'
+
+import UnitView from './components/views/tugas/Unit.vue'
+import KategoriUnitView from './components/views/tugas/KategoriUnit.vue'
+import CapaianUnitView from './components/views/tugas/CapaianUnit.vue'
+import DataDasarView from './components/views/tugas/DataDasar.vue'
+import JenisSatkerView from './components/views/tugas/JenisSatker.vue'
+import PeriodeView from './components/views/tugas/Periode.vue'
+import MasterIndikatorView from './components/views/tugas/MasterIndikator.vue'
+import IndikatorPeriodeView from './components/views/tugas/IndikatorPeriode.vue'
+import SatuanKerjaView from './components/views/tugas/SatuanKerja.vue'
+import IndikatorSatkerView from './components/views/tugas/IndikatorSatuanKerja.vue'
+import IndikatorSatkerLogView from './components/views/tugas/IndikatorSatuanKerjaLog.vue'
+import AspekView from './components/views/tugas/Aspek.vue'
 
 // Routes
 const routes = [
@@ -60,15 +71,65 @@ const routes = [
         name: 'Repository',
         meta: {description: 'List of popular javascript repos'}
       }, {
-        path: 'excel',
-        component: ExcelView,
-        name: 'Excel',
-        meta: {description: 'Jexcel Axios'}
+        path: 'datadasar',
+        component: DataDasarView,
+        name: 'DataDasar',
+        meta: {description: 'List of Data Dasar'}
       }, {
-        path: 'jexcel',
-        component: JexcelView,
-        name: 'Jexcel',
-        meta: {description: 'Jexcel'}
+        path: 'capaianunit',
+        component: CapaianUnitView,
+        name: 'CapaianUnit',
+        meta: {description: 'List of Capaian Unit'}
+      }, {
+        path: 'unit',
+        component: UnitView,
+        name: 'Unit',
+        meta: {description: 'List of Unit'}
+      }, {
+        path: 'kategoriunit',
+        component: KategoriUnitView,
+        name: 'KategoriUnit',
+        meta: {description: 'List of Kategori Unit'}
+      }, {
+        path: 'jenissatker',
+        component: JenisSatkerView,
+        name: 'JenisSatker',
+        meta: {description: 'List of Jenis Satuan Kerja'}
+      }, {
+        path: 'periode',
+        component: PeriodeView,
+        name: 'Periode',
+        meta: {description: 'List of Periode'}
+      }, {
+        path: 'masterindikator',
+        component: MasterIndikatorView,
+        name: 'MasterIndikator',
+        meta: {description: 'List of Master Indikator'}
+      }, {
+        path: 'indikatorperiode',
+        component: IndikatorPeriodeView,
+        name: 'IndikatorPeriode',
+        meta: {description: 'List of Indikator Periode'}
+      }, {
+        path: 'satuankerja',
+        component: SatuanKerjaView,
+        name: 'SatuanKerja',
+        meta: {description: 'List of Satuan Kerja'}
+      }, {
+        path: 'indikatorsatker',
+        component: IndikatorSatkerView,
+        name: 'IndikatorSatker',
+        meta: {description: 'List of Indikator Satuan Kerja'}
+      }, {
+        path: 'indikatorsatkerlog',
+        component: IndikatorSatkerLogView,
+        name: 'IndikatorSatkerLog',
+        meta: {description: 'List of Indikator Satuan Kerja Log'}
+      }, {
+        path: 'aspek',
+        component: AspekView,
+        name: 'Aspek',
+        meta: {description: 'List of Aspek'}
       }
     ]
   }, {

@@ -7,18 +7,6 @@
         <span class="page">Dashboard</span>
       </a>
     </router-link>
-    <router-link tag="li" class="pageLink" to="/excel">
-      <a>
-        <i class="fa fa-table"></i>
-        <span class="page">Excel</span>
-      </a>
-    </router-link>
-    <router-link tag="li" class="pageLink" to="/jexcel">
-      <a>
-        <i class="fa fa-table"></i>
-        <span class="page">Jexcel</span>
-      </a>
-    </router-link>
     <router-link tag="li" class="pageLink" to="/tables">
       <a>
         <i class="fa fa-table"></i>
@@ -39,6 +27,77 @@
         <span class="page">Settings</span>
       </a>
     </router-link>
+    <li class="treeview">
+      <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span class="treeview-title">Tugas CRUD</span>
+        <span class="pull-right-container pull-right">
+          <i class="fa fa-angle-left fa-fw"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+          <a href="/aspek">
+            <i class="fa fa-address-book-o"></i> Aspek
+          </a>
+        </li>
+        <li>
+          <a href="/capaianunit">
+            <i class="fa fa-address-book-o"></i> Capaian Unit
+          </a>
+        </li>
+        <li>
+          <a href="/datadasar">
+            <i class="fa fa-address-book-o"></i> Data Dasar
+          </a>
+        </li>
+        <!-- <li>
+          <a href="/unit">
+            <i class="fa fa-address-book-o"></i> Unit
+          </a>
+        </li>
+        <li>
+          <a href="/kategoriunit">
+            <i class="fa fa-address-book-o"></i> Kategori Unit
+          </a>
+        </li> -->
+        <li>
+          <a href="/periode">
+            <i class="fa fa-address-book-o"></i> Periode
+          </a>
+        </li>
+        <li>
+          <a href="/satuankerja">
+            <i class="fa fa-address-book-o"></i> Satuan Kerja
+          </a>
+        </li>
+        <li>
+          <a href="/jenissatker">
+            <i class="fa fa-address-book-o"></i> Jenis Satker
+          </a>
+        </li>
+        <li>
+          <a href="/masterindikator">
+            <i class="fa fa-address-book-o"></i> Master Indikator
+          </a>
+        </li>
+        <li>
+          <a href="/indikatorperiode">
+            <i class="fa fa-address-book-o"></i> Indikator Periode
+          </a>
+        </li>
+        <li>
+          <a href="/indikatorsatker">
+            <i class="fa fa-address-book-o"></i> Indikator Satker
+          </a>
+        </li>
+        <li>
+          <a href="/indikatorsatkerlog">
+            <i class="fa fa-address-book-o"></i> Indikator Satker Log
+          </a>
+        </li>
+      </ul>
+    </li>
     <li class="treeview">
       <a href="#">
         <i class="fa fa-folder-o"></i>
